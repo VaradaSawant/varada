@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        echo 'Compiling java file...'
+        sh 'javac Sample.java'
+      }
+}
+    stage('Run') {
+      steps {
+        echo 'Running java file...'
+        sh 'java Sample'
+      }
+   }
+}
+post {
+  success {
+    echo 'Pipeline Completed Successfully'
+}
+  failure {
+     echo 'Pipeline Failed'
+     }
+  }
+}
